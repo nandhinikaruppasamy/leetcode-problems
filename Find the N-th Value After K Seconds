@@ -1,0 +1,26 @@
+class Solution {
+    private static final int MOD = 1000000007;
+    public int valueAfterKSeconds(int n, int k) {
+        List<List<Integer>> list = new ArrayList<>();
+        for(int i=0;i<=k;i++){
+            list.add(new ArrayList<>());
+        }
+        for(int i=0;i<n;i++){
+            list.get(0).add(1);
+        }
+        for(int i=1;i<=k;i++){
+            int sum = 1;
+            List<Integer> l = list.get(i-1);
+            List<Integer> res = new ArrayList<>();
+            res.add(1);
+            for(int j=1;j<n;j++){
+               sum = (sum + l.get(j))% MOD;
+               res.add(sum);
+            }
+            list.set(i,res);
+        }
+        // List<Integer> o = list.get(list.size()-1);
+        // int ele = o.get(o.size()-1);
+        return list.get(k).get(n-1);
+    }
+}
