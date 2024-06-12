@@ -1,0 +1,26 @@
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        List<Integer> list = new ArrayList<>();
+        for(int i : arr1){
+            list.add(i);
+        }
+        int[] arr = new int[arr1.length];
+        List<Integer> l = new ArrayList<>();
+        List<Integer> remove = new ArrayList<>();
+        for(int k:arr2){
+            for(int i=0;i<list.size();i++){
+                if(list.get(i)==k){
+                    l.add(k);
+                    remove.add(k);
+                }
+            }
+        }
+        list.removeAll(remove);
+        Collections.sort(list);
+        for(int i=0;i<list.size();i++) l.add(list.get(i));
+        for(int i=0;i<l.size();i++){
+            arr[i]=l.get(i);
+        }
+        return arr;
+    }
+}
