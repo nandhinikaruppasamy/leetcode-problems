@@ -1,0 +1,19 @@
+class Solution {
+    public int minIncrementForUnique(int[] nums) {
+       int[] fre = new int[100001] ;
+       for(int i=0;i<nums.length;i++){
+        fre[nums[i]]++;
+       }
+       int count = 0;
+       for(int i=0;i<fre.length-1;i++){
+        if(fre[i]>1){
+            count+=(fre[i]-1);
+            fre[i+1]+=(fre[i]-1);
+        }
+       }
+       int n = fre[100000]-1;
+       count += (n*(n+1)/2);
+       return count;
+
+    }
+}
