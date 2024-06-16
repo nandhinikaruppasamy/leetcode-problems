@@ -1,0 +1,13 @@
+class Solution {
+    public long countCompleteDayPairs(int[] hours) {
+        long count = 0;
+        int[] fre = new int[24];
+        for(int i : hours){
+            int j = i%24;
+            int k = (24-j)%24;
+            count += fre[k];
+            fre[j]++;
+        }
+        return count;
+    }
+}
