@@ -1,5 +1,6 @@
 class Solution {
     public boolean judgeSquareSum(int c) {
+        boolean find = false;
         int num = (int)Math.sqrt(c);
        for(int i=0;i<=num;i++){
         int nu = i*i;
@@ -7,10 +8,12 @@ class Solution {
         double n = Math.sqrt(min);
         int d = (int)n;
         if(n==d){
-            return true;
+            find = true;
+           break;
         }
        }
-         return false;
+       if(find) return true;
+        else return false;
        
     }
 }
