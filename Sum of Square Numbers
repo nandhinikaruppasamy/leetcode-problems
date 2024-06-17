@@ -4,8 +4,9 @@ class Solution {
        for(int i=0;i<=num;i++){
         int nu = i*i;
         int min = c-nu;
-        int val = (int)Math.sqrt(min);
-        if(val*val == min){
+        double n = Math.sqrt(min);
+        int d = (int)n;
+        if(n==d){
             return true;
         }
        }
