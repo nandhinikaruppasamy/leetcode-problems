@@ -1,0 +1,18 @@
+class Solution {
+    public int beautifulSubstrings(String s, int x) {
+        String vow = "aeiou";
+        int count =0;
+        for(int i=0;i<s.length();i++){
+                int vowel=0;
+                int consant=0;
+                for(int k=i;k<s.length();k++){
+                    if(vow.contains(s.charAt(k)+"")){
+                        vowel++;
+                    }
+                    else{consant++;}
+                    if(vowel==consant && (vowel*consant)%x==0) count++;
+                }
+        }
+        return count;
+    }
+}
