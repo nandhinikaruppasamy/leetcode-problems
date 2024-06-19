@@ -1,0 +1,29 @@
+class Solution {
+    public String sortString(String s) {
+         char[] ar = s.toCharArray();
+        Arrays.sort(ar);
+        String temp = "";
+        for(char sw : ar) temp += sw;
+         int[] fre = new int[26];
+       for(int i=0;i<temp.length();i++){
+        int index = temp.charAt(i)-'a';
+        fre[index]++;
+       }
+        String res = "";
+       for(int i=0;i<26;i++){
+        for(int j=0;j<26;j++){
+            if(fre[j]>0){
+                res += (char)(j+'a');
+                fre[j]--;
+            }
+         }
+         for(int j=25;j>=0;j--){
+            if(fre[j]>0){
+                res +=(char)( j+'a');
+                fre[j]--;
+            }
+         }
+       }
+       return res;
+    }
+}
