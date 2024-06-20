@@ -1,0 +1,22 @@
+class Solution {
+    public int maxDistance(int[] ar, int m) {
+        Arrays.sort(ar);
+        int low = 1;
+        int high = ar[ar.length-1]-ar[0];
+        int res = 0;
+        while(low<=high){
+            int mid = (low+high)/2;
+            int bal = 1;
+            int last = ar[0];
+            for(int i=0;i<ar.length&&bal!=m;i++){
+                if(ar[i]-last>=mid){
+                    bal++;
+                    last=ar[i];
+                }
+            }
+            if(bal==m) {low=mid+1;res=mid;}
+            else high=mid-1;
+        }
+        return res;
+    }
+}
