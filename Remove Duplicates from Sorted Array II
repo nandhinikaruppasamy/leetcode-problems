@@ -1,0 +1,30 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int v = map.getOrDefault(nums[i], 0);
+            map.put(nums[i], v + 1);
+        }
+        int index = 0;
+        for (Map.Entry<Integer, Integer> it : map.entrySet()) {
+            int value = it.getKey();
+            int count = Math.min(it.getValue(), 2);
+            for (int i = 0; i < count; i++) {
+                nums[index] = value;
+                index++;
+            }
+        }
+        while (index < nums.length) {
+            nums[index] = -1000;
+            index++;
+        }
+        int res = 0;
+        for(int i:nums){
+            if(i!=-1000){
+                res++;
+            }
+        }
+        return res;
+    }
+}
